@@ -4,7 +4,6 @@ class CreateStagingPosts < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :description
       t.string :subtitle
-      t.belongs_to :tag, foreign_key: true
       t.string :references
       t.string :html
       t.string :related_posts

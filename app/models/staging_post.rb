@@ -1,3 +1,3 @@
 class StagingPost < ApplicationRecord
-  belongs_to :tag
+  has_many :staging_tags
 end

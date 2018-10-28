@@ -5,6 +5,7 @@ class CreateTags < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :description
       t.string :subtitle
+      t.belongs_to :post
 
       t.timestamps
     end
