@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :staging_post_tags
+  resources :post_tags
   resources :staging_tags
   resources :tags
   resources :staging_posts
