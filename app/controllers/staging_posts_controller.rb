@@ -1,0 +1,2 @@
+class StagingPostsController < ApplicationController
+end

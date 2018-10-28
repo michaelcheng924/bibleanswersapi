@@ -1,0 +1,2 @@
+class StagingTagsController < ApplicationController
+end
