@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :staging_posts
   resources :posts
+
+  get '/admininfo', to: 'posts#admininfo'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

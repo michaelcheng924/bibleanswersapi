@@ -23,6 +23,15 @@ class PostsController < ApplicationController
     render json: post
   end
 
+  def admininfo
+    render :json => {
+      :posts => Post.all,
+      :staging_posts => StagingPost.all,
+      :tags => Tag.all,
+      :staging_tags => StagingTag.all
+    }
+  end
+
   private
 
   def post_params
