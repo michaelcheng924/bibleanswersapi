@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_221024) do
+ActiveRecord::Schema.define(version: 2018_10_28_214908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,13 @@ ActiveRecord::Schema.define(version: 2018_10_28_221024) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.string "slug"
+    t.string "url"
     t.string "title"
     t.string "description"
     t.string "subtitle"
+    t.string "image_url"
+    t.string "image_url_small"
     t.string "references"
     t.string "html"
     t.string "related_posts"
@@ -35,7 +39,6 @@ ActiveRecord::Schema.define(version: 2018_10_28_221024) do
     t.string "last_updated"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "url"
   end
 
   create_table "staging_post_tags", force: :cascade do |t|
@@ -48,9 +51,13 @@ ActiveRecord::Schema.define(version: 2018_10_28_221024) do
   end
 
   create_table "staging_posts", force: :cascade do |t|
+    t.string "slug"
+    t.string "url"
     t.string "title"
     t.string "description"
     t.string "subtitle"
+    t.string "image_url"
+    t.string "image_url_small"
     t.string "references"
     t.string "html"
     t.string "related_posts"
@@ -58,7 +65,6 @@ ActiveRecord::Schema.define(version: 2018_10_28_221024) do
     t.string "last_updated"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "url"
   end
 
   create_table "staging_tags", force: :cascade do |t|
