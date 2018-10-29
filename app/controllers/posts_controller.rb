@@ -23,6 +23,20 @@ class PostsController < ApplicationController
     render json: post
   end
 
+  def initialfetch
+    render :json => {
+      :posts => Post.all,
+      :tags => Tag.all
+    }
+  end
+
+  def initialfetchstaging
+    render :json => {
+      :posts => StagingPost.all,
+      :tags => StagingTag.all
+    }
+  end
+
   def admininfo
     render :json => {
       :posts => Post.all,
