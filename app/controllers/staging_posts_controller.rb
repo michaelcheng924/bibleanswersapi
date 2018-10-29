@@ -26,6 +26,6 @@ class StagingPostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:title, :description, :subtitle, :references, :html, :related, :date_added, :last_updated, :tag_ids)
+    params.permit(:slug, :url, :title, :description, :subtitle, :image_url, :image_url_small, :references, :html, :related_posts, :date_added, :last_updated, :tag_ids)
   end
 end
