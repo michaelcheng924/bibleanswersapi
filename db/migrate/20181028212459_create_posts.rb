@@ -10,9 +10,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :image_url_small
       t.string :references
       t.string :html
-      t.string :related_posts
+      t.string :related_posts_tags
       t.string :date_added
-      t.string :last_updated
 
       t.timestamps
     end

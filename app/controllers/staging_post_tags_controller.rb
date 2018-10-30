@@ -1,2 +1,0 @@
-class StagingPostTagsController < ApplicationController
-end

@@ -34,52 +34,15 @@ ActiveRecord::Schema.define(version: 2018_10_29_221842) do
     t.string "image_url_small"
     t.string "references"
     t.string "html"
-    t.string "related_posts"
+    t.string "related_posts_tags"
     t.string "date_added"
-    t.string "last_updated"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "staging_post_tags", force: :cascade do |t|
-    t.bigint "staging_post_id"
-    t.bigint "staging_tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["staging_post_id"], name: "index_staging_post_tags_on_staging_post_id"
-    t.index ["staging_tag_id"], name: "index_staging_post_tags_on_staging_tag_id"
-  end
-
-  create_table "staging_posts", force: :cascade do |t|
-    t.string "slug"
-    t.string "url"
-    t.string "title"
-    t.string "description"
-    t.string "subtitle"
-    t.string "image_url"
-    t.string "image_url_small"
-    t.string "references"
-    t.string "html"
-    t.string "related_posts"
-    t.string "date_added"
-    t.string "last_updated"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "staging_tags", force: :cascade do |t|
-    t.string "slug"
-    t.string "title"
-    t.string "description"
-    t.string "subtitle"
-    t.bigint "staging_post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["staging_post_id"], name: "index_staging_tags_on_staging_post_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "slug"
+    t.string "url"
     t.string "title"
     t.string "description"
     t.string "subtitle"
@@ -99,6 +62,4 @@ ActiveRecord::Schema.define(version: 2018_10_29_221842) do
 
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
-  add_foreign_key "staging_post_tags", "staging_posts"
-  add_foreign_key "staging_post_tags", "staging_tags"
 end
