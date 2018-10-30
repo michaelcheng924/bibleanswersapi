@@ -30,13 +30,6 @@ class PostsController < ApplicationController
     }
   end
 
-  def initialfetchstaging
-    render :json => {
-      :posts => StagingPost.all,
-      :tags => StagingTag.all
-    }
-  end
-
   def admininfo
     render :json => {
       :posts => Post.all,
@@ -49,6 +42,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:slug, :url, :title, :description, :subtitle, :image_url, :image_url_small, :references, :html, :related_posts, :date_added, :last_updated, :tag_ids)
+    params.permit(:published, :slug, :url, :title, :description, :subtitle, :image_url, :image_url_small, :references, :html, :related_posts_tags, :date_added, :tag_ids)
   end
 end
