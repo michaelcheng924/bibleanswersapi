@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authorize, only: [:create, :update, :destroy]
+
   def index
     render json: Post.all
   end
@@ -27,15 +29,6 @@ class PostsController < ApplicationController
     render :json => {
       :posts => Post.all,
       :tags => Tag.all
-    }
-  end
-
-  def admininfo
-    render :json => {
-      :posts => Post.all,
-      :staging_posts => StagingPost.all,
-      :tags => Tag.all,
-      :staging_tags => StagingTag.all
     }
   end
 
