@@ -28,8 +28,7 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    tag = Tag.find(params[:id])
-    tag.destroy(params[:id])
+    tag = Tag.destroy(params[:id])
 
     render json: tag
   end

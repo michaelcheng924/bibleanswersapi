@@ -19,8 +19,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy(params[:id])
+    post = Post.destroy(params[:id])
 
     render json: post
   end
