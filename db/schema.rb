@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_10_29_221842) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.boolean "published"
     t.string "slug"
     t.string "url"
     t.string "title"
@@ -46,10 +47,8 @@ ActiveRecord::Schema.define(version: 2018_10_29_221842) do
     t.string "title"
     t.string "description"
     t.string "subtitle"
-    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_tags_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
