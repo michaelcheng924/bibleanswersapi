@@ -1,4 +1,4 @@
-class SitemapsController < ApplicationController
+class SitemapController < ApplicationController
   def index
     render json: Sitemap.find(1)
   end

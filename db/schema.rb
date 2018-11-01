@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_29_221842) do
+ActiveRecord::Schema.define(version: 2018_11_01_201321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 2018_10_29_221842) do
     t.string "html"
     t.string "related_posts_tags"
     t.string "date_added"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sitemaps", force: :cascade do |t|
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
