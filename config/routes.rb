@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :tags
   resources :posts
 
+  get '/sitemap', to: 'sitemap#index'
+  patch '/sitemap', to: 'sitemap#update'
+
   get '/initialfetch', to: 'posts#initialfetch'
   get '/admininfo', to: 'posts#admininfo'
 
