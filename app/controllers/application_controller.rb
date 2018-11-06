@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
     if authorization && User.find_by(username: JWT.decode(authorization.split(' ')[1], nil, false)[0])
       return true
     else
-      return false
+      raise "Error"
     end
   end
 end
