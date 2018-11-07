@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_action :authorize, only: [:create, :update, :destroy]
 
   def index
-    render json: Tag.all
+    render json: Tag.all.sort_by { |tag| tag.title.downcase }
   end
 
   def create
