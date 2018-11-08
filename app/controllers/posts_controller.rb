@@ -8,6 +8,10 @@ class PostsController < ApplicationController
   def create
     post = Post.create(post_params)
 
+    if params[:tag_ids]
+      post.update(tag_ids: params[:tag_ids])
+    end
+
     render json: post
   end
 
