@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_action :redirect_to_https
-
   def login
     user = User.find_by(username: params[:username])
 
