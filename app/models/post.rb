@@ -18,7 +18,7 @@ class Post < ApplicationRecord
       references: references,
       html: html,
       date_added: date_added,
-      updated_at: updated_at, 
+      updated_at: updated_at,
       tags: tags
     }
   end

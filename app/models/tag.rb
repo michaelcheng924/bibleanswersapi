@@ -9,8 +9,7 @@ class Tag < ApplicationRecord
       url: url,
       title: title,
       description: description,
-      subtitle: subtitle,
-      posts: posts
+      subtitle: subtitle
     }
   end
 end
