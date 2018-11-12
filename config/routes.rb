@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   get '/sitemap', to: 'sitemap#index'
   patch '/sitemap', to: 'sitemap#update'
 
-  get '/initialfetch', to: 'posts#initialfetch'
-  get '/admininfo', to: 'posts#admininfo'
+  get '/initialfetch', to: 'application#initialfetch'
 
   post '/login', to: 'users#login'
   post '/checktoken', to: 'users#checktoken'

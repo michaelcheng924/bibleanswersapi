@@ -8,4 +8,12 @@ class ApplicationController < ActionController::API
       raise "Error"
     end
   end
+
+  def initialfetch
+    render :json => {
+      :posts => Post.all,
+      :tags => Tag.all,
+      :post_tags => PostTag.all
+    }
+  end
 end
