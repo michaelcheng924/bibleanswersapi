@@ -5,6 +5,12 @@ class PostsController < ApplicationController
     render json: Post.all
   end
 
+  def show
+    post = Post.find_by(slug: params[:id])
+
+    render json: post
+  end
+
   def create
     post = Post.create(post_params)
 
