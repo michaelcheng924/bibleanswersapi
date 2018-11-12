@@ -12,8 +12,7 @@ class ApplicationController < ActionController::API
   def initialfetch
     render :json => {
       :posts => Post.all,
-      :tags => Tag.all,
-      :post_tags => PostTag.all
+      :tags => Tag.all
     }
   end
 end
