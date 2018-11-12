@@ -9,7 +9,8 @@ class Tag < ApplicationRecord
       url: url,
       title: title,
       description: description,
-      subtitle: subtitle
+      subtitle: subtitle,
+      post_ids: posts.map { |post| post.id }
     }
   end
 end
