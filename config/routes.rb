@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :tags
   resources :posts
 
+  get '/relatedposts/:id', to: 'posts#related'
+
   get '/sitemap', to: 'sitemap#index'
   patch '/sitemap', to: 'sitemap#update'
 
