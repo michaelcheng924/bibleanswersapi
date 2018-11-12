@@ -10,7 +10,7 @@ class Tag < ApplicationRecord
       title: title,
       description: description,
       subtitle: subtitle,
-      post_slugs: posts.map { |post| post.slugs }
+      post_slugs: posts.map { |post| post.slug }
     }
   end
 end
