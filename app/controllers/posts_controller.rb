@@ -5,19 +5,38 @@ class PostsController < ApplicationController
     render json: Post.all
   end
 
-  def smallposts
-    mapped_posts = Post.all.map do |post|
+  def homefetch
+    published_posts = Post.all.select do |post|
+      post.published && post.date_added
+    end
+
+    ten_sorted_posts = published_posts.sort_by { |post| Date.parse(post.date_added) }[0..10]
+
+    mapped_posts = ten_sorted_posts.map do |post|
       {
         title: post.title,
         subtitle: post.subtitle,
         url: post.url,
         image_url_small: post.image_url_small,
-        date_added: post.date_added,
-        tags: post.tags.map {|tag| tag.title.downcase}
+        date_added: post.date_added
       }
     end
 
-    render json: mapped_posts
+    tags_with_posts = Tag.all.select do |tag|
+      tag.posts.length
+    end
+
+    mapped_tags = tags_with_posts.map do |tag|
+      {
+        title: tag.title,
+        url: tag.url
+      }
+    end
+
+    render :json => {
+      :recent_posts => mapped_tags,
+      :tags => mapped_tags
+    }
   end
 
   def show
