@@ -15,6 +15,7 @@ class Post < ApplicationRecord
       subtitle: subtitle,
       image_url: image_url,
       image_url_small: image_url_small,
+      related_posts_tags_slugs: related_posts_tags.split(',').map { |id| Tag.find(id).slug },
       references: references,
       html: html,
       date_added: date_added,
