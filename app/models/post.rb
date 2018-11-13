@@ -20,7 +20,7 @@ class Post < ApplicationRecord
       html: html,
       date_added: date_added,
       updated_at: updated_at,
-      tags: tags.sort_by { |tag| tag.downcase }
+      tags: tags.sort_by { |tag| tag.title.downcase }
     }
   end
 end
