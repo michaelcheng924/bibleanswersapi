@@ -5,6 +5,19 @@ class PostsController < ApplicationController
     render json: Post.all
   end
 
+  def smallposts
+    mapped_posts = Post.all.map do |post|
+      {
+        title: post.title,
+        subtitle: post.subtitle,
+        image_url_small: post.image_url_small,
+        date_added: post.date_added
+      }
+    end
+
+    render json: mapped_posts
+  end
+
   def show
     post = Post.find_by(slug: params[:id])
 

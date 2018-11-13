@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :posts
 
+  get '/smallposts', to: 'posts#smallposts'
   get '/relatedposts/:id', to: 'posts#related'
 
   get '/sitemap', to: 'sitemap#index'
