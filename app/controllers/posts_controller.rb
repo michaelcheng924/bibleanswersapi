@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     end
 
     render :json => {
-      :recent_posts => mapped_tags,
+      :recent_posts => mapped_posts,
       :tags => mapped_tags
     }
   end
