@@ -10,7 +10,7 @@ class PostsController < ApplicationController
       post.published && post.date_added
     end
 
-    ten_sorted_posts = published_posts.sort_by { |post| Date.parse(post.date_added) }[0..10]
+    ten_sorted_posts = published_posts.sort_by { |post| Date.parse(post.date_added) }.reverse[0..10]
 
     mapped_posts = ten_sorted_posts.map do |post|
       {
