@@ -10,8 +10,10 @@ class PostsController < ApplicationController
       {
         title: post.title,
         subtitle: post.subtitle,
+        url: post.url,
         image_url_small: post.image_url_small,
-        date_added: post.date_added
+        date_added: post.date_added,
+        tags: post.tags.map {|tag| tag.title.downcase}
       }
     end
 
