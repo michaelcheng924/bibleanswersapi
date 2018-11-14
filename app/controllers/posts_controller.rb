@@ -76,7 +76,7 @@ class PostsController < ApplicationController
 
     mapped_related_posts_tags.each do |tag|
       tag.posts.each do |post|
-        if post.slug != params[:id] && related_posts.length < 10
+        if post.published && post.date_added && post.slug != params[:id] && related_posts.length < 10
           related_posts << post
         end
       end
@@ -85,7 +85,7 @@ class PostsController < ApplicationController
     if related_posts.length < 10
       post.tags.each do |tag|
         tag.posts.each do |post|
-          if related_posts.length < 10 && post.slug != params[:slug]
+          if post.published && post.date_added && related_posts.length < 10 && post.slug != params[:slug]
             related_posts << post
           end
         end
