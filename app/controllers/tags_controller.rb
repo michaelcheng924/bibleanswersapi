@@ -19,6 +19,7 @@ class TagsController < ApplicationController
       {
         title: post.title,
         subtitle: post.subtitle,
+        url: post.url,
         image_url_small: post.image_url_small,
         date_added: post.date_added
       }
