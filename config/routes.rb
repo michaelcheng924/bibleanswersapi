@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/relatedposts/:id', to: 'posts#related'
   get '/export', to: 'posts#export'
 
+  get '/tags_for_all_posts', to: 'tags#tags_for_all_posts'
+
   get '/sitemap', to: 'sitemap#index'
   patch '/sitemap', to: 'sitemap#update'
 
