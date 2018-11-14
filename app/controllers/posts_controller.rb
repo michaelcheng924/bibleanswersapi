@@ -23,7 +23,9 @@ class PostsController < ApplicationController
     end
 
     tags_with_posts = Tag.all.select do |tag|
-      tag.posts.length > 0
+      tag.posts.select do |post|
+        post.published && post.date_added
+      end.length > 0
     end
 
     sorted_tags = tags_with_posts.sort_by do |tag|
