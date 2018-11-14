@@ -109,7 +109,23 @@ class PostsController < ApplicationController
       }
     end
 
-    render json: mapped_posts
+    filtered_tags = Tag.all.select do |tag|
+      tag.posts.select do |post|
+        post.published && post.date_added
+      end.length > 0
+    end
+
+    mapped_tags = filtered_tags.map do |tag|
+      {
+        url: tag.url,
+        slug: tag.slug
+      }
+    end
+
+    render :json => {
+      :posts => mapped_posts,
+      :tags => mapped_tags
+    }
   end
 
   def create
