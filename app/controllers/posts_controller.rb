@@ -36,7 +36,9 @@ class PostsController < ApplicationController
       {
         title: tag.title,
         url: tag.url,
-        posts_count: tag.posts.length
+        posts_count: tag.posts.select do |post|
+          post.published && post.date_added
+        end.length
       }
     end
 
