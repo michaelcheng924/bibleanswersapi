@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/homefetch', to: 'posts#homefetch'
   get '/relatedposts/:id', to: 'posts#related'
+  get '/export', to: 'posts#export'
 
   get '/sitemap', to: 'sitemap#index'
   patch '/sitemap', to: 'sitemap#update'

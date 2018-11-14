@@ -97,6 +97,21 @@ class PostsController < ApplicationController
     }
   end
 
+  def export
+    filtered_posts = Post.all.select do |post|
+      post.published && post.date_added
+    end
+
+    mapped_posts = filtered_posts.map do |post|
+      {
+        url: post.url,
+        slug: post.slug
+      }
+    end
+
+    render json: mapped_posts
+  end
+
   def create
     post = Post.create(post_params)
 
