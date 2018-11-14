@@ -49,6 +49,50 @@ class TagsController < ApplicationController
     }
   end
 
+  def tags_for_unfinished
+    tags_with_unfinished = Tag.all.select do |tag|
+      tag.posts.select do |post|
+        !post.published
+      end.length > 0
+    end
+
+    sorted_tags = tags_with_unfinished.sort_by do |tag|
+      tag.title.downcase
+    end
+
+    mapped_tags = sorted_tags.map do |tag|
+      filtered_posts = tag.posts.select do |post|
+        !post.published
+      end
+
+      mapped_posts = filtered_posts.map do |post|
+        {
+          title: post.title,
+          subtitle: post.subtitle,
+          url: post.url,
+          image_url_small: post.image_url_small
+        }
+      end
+
+      sorted_posts = mapped_posts.sort_by do |post|
+        post[:title].downcase
+      end
+
+      {
+        title: tag.title,
+        url: tag.url,
+        posts: sorted_posts
+      }
+    end
+
+    render :json => {
+      :tags => mapped_tags,
+      :posts_count => Post.all.select do |post|
+        !post.published
+      end.length
+    }
+  end
+
   def show
     tag = Tag.find_by(slug: params[:id])
 
