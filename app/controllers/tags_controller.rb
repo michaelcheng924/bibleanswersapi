@@ -5,6 +5,33 @@ class TagsController < ApplicationController
     render json: Tag.all.sort_by { |tag| tag.title.downcase }
   end
 
+  def show
+    tag = Tag.find_by(slug: params[:id])
+
+    if !tag
+      render :json => {
+        :message => "Tag not found"
+      }
+      return
+    end
+
+    mapped_posts = tag.posts.map do |post|
+      {
+        title: post.title,
+        subtitle: post.subtitle,
+        image_url_small: post.image_url_small,
+        date_added: post.date_added
+      }
+    end
+
+    render :json => {
+      title: tag.title,
+      subtitle: tag.subtitle,
+      description: tag.description,
+      posts: mapped_posts
+    }
+  end
+
   def create
     if authorize
       tag = Tag.create(tag_params)
