@@ -15,7 +15,11 @@ class TagsController < ApplicationController
       return
     end
 
-    mapped_posts = tag.posts.map do |post|
+    filtered_posts = tag.posts.select do |post|
+      post.published && post.date_added
+    end
+
+    mapped_posts = filtered_posts.map do |post|
       {
         title: post.title,
         subtitle: post.subtitle,
