@@ -29,7 +29,8 @@ class PostsController < ApplicationController
     mapped_tags = tags_with_posts.map do |tag|
       {
         title: tag.title,
-        url: tag.url
+        url: tag.url,
+        posts_count: tag.posts.length
       }
     end
 
