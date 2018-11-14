@@ -41,7 +41,12 @@ class TagsController < ApplicationController
       }
     end
 
-    render json: mapped_tags
+    render :json => {
+      :tags => mapped_tags,
+      :posts_count => Post.all.select do |post|
+        post.published && post.date_added
+      end.length
+    }
   end
 
   def show
