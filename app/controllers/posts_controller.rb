@@ -23,10 +23,14 @@ class PostsController < ApplicationController
     end
 
     tags_with_posts = Tag.all.select do |tag|
-      tag.posts.length
+      tag.posts.length > 0
     end
 
-    mapped_tags = tags_with_posts.map do |tag|
+    sorted_tags = tags_with_posts.sort_by do |tag|
+      tag.title.downcase
+    end
+
+    mapped_tags = sorted_tags.map do |tag|
       {
         title: tag.title,
         url: tag.url,
