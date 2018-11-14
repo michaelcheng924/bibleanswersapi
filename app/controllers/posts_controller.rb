@@ -99,11 +99,7 @@ class PostsController < ApplicationController
   end
 
   def export
-    filtered_posts = Post.all.select do |post|
-      post.published && post.date_added
-    end
-
-    mapped_posts = filtered_posts.map do |post|
+    mapped_posts = Post.all.map do |post|
       {
         url: post.url,
         slug: post.slug
