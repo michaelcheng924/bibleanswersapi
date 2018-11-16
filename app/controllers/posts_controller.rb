@@ -49,6 +49,49 @@ class PostsController < ApplicationController
     }
   end
 
+  def all_posts
+    filtered_posts = Post.all.select do |post|
+      post.published && post.date_added
+    end
+
+    mapped_posts = filtered_posts.map do |post|
+      {
+        title: post.title,
+        subtitle: post.subtitle,
+        image_url_small: post.image_url_small,
+        url: post.url,
+        tags: post.tags.map do |tag|
+          {
+            title: tag.title,
+            url: tag.url
+          }
+        end
+      }
+    end
+
+    render json: mapped_posts
+  end
+
+  def posts_in_progress
+    filtered_posts = Post.all.select do |post|
+      !post.published
+    end
+
+    mapped_posts = filtered_posts.map do |post|
+      {
+        title: post.title,
+        url: post.url,
+        tags: post.tags.map do |tag|
+          {
+            title: tag.title
+          }
+        end
+      }
+    end
+
+    render json: mapped_posts
+  end
+
   def show
     post = Post.find_by(slug: params[:id])
 
