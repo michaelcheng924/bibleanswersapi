@@ -70,6 +70,6 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-    params.permit(:slug, :url, :title, :description, :subtitle)
+    params.permit(:slug, :url, :title, :description, :subtitle, :image_url, :date_added)
   end
 end
