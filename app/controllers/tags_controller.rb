@@ -36,7 +36,8 @@ class TagsController < ApplicationController
       image_url: tag.image_url,
       date_added: tag.date_added,
       updated_at: tag.updated_at,
-      posts: mapped_posts
+      posts: mapped_posts,
+      user: User.first
     }
   end
 

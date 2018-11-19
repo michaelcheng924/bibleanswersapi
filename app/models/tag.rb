@@ -13,8 +13,7 @@ class Tag < ApplicationRecord
       image_url: image_url,
       date_added: date_added,
       updated_at: updated_at,
-      post_slugs: posts.map(&:slug),
-      user: User.first
+      post_slugs: posts.map(&:slug)
     }
   end
 end
