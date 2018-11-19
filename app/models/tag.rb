@@ -10,6 +10,8 @@ class Tag < ApplicationRecord
       title: title,
       description: description,
       subtitle: subtitle,
+      image_url: image_url,
+      date_added: date_added,
       post_slugs: posts.map(&:slug)
     }
   end

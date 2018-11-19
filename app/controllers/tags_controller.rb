@@ -33,6 +33,8 @@ class TagsController < ApplicationController
       title: tag.title,
       subtitle: tag.subtitle,
       description: tag.description,
+      image_url: tag.image_url,
+      date_added: tag.date_added,
       posts: mapped_posts
     }
   end
