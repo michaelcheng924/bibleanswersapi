@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   post '/login', to: 'users#login'
   post '/checktoken', to: 'users#checktoken'
+
+  get '/passages', to: 'application#passages'
 end

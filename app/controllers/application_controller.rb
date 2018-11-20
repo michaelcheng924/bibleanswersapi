@@ -15,4 +15,10 @@ class ApplicationController < ActionController::API
       :tags => Tag.all
     }
   end
+
+  def passages
+    result = RestClient.get("https://api.esv.org/v3/passage/text/?q=#{URI::encode(params[:passages])}", { Authorization: '231ff21ec1223742fb4e7e65e23ac642b4cef0af' })
+
+    render json: result
+  end
 end
