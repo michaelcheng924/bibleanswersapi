@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/all_posts', to: 'posts#all_posts'
   get '/posts_in_progress', to: 'posts#posts_in_progress'
+  get '/posts_for_facebook', to: 'posts#posts_for_facebook'
 
   get '/sitemap', to: 'sitemap#index'
   patch '/sitemap', to: 'sitemap#update'

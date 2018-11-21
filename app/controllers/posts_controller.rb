@@ -93,6 +93,21 @@ class PostsController < ApplicationController
     render json: mapped_posts
   end
 
+  def posts_for_facebook
+    filtered_posts = Post.all.select do |post|
+      post.published && post.date_added
+    end
+
+    mapped_posts = filtered_posts.map do |post|
+      {
+        title: post.title,
+        url: post.url
+      }
+    end
+
+    render json: mapped_posts
+  end
+
   def show
     post = Post.find_by(slug: params[:id])
 
