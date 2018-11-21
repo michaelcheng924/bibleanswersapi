@@ -60,6 +60,7 @@ class PostsController < ApplicationController
         subtitle: post.subtitle,
         image_url_small: post.image_url_small,
         url: post.url,
+        date_added: post.date_added,
         tags: post.tags.map do |tag|
           {
             title: tag.title,
