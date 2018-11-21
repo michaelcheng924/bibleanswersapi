@@ -101,7 +101,8 @@ class PostsController < ApplicationController
     mapped_posts = filtered_posts.map do |post|
       {
         title: post.title,
-        url: post.url
+        url: post.url,
+        date_added: post.date_added
       }
     end
 
